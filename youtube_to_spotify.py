@@ -31,7 +31,6 @@ def authorize_spotify(client_id: str, client_secret: str, redirect_uri: str, sco
     sp = spotipy.Spotify(auth=token_info['access_token']) # use access token to create spotify client 
     
     print("Account Authorized ")
-    
     return sp
     
     
@@ -44,7 +43,6 @@ def create_playlist(new_playlist_name:str, spotify_client):
     print("Playlist Created")
     
     
-
 def get_track_uri(spotify_client, artists:list, tracks:list):
     
     '''add the tracks to the spotify playlist''' 
@@ -62,6 +60,7 @@ def get_track_uri(spotify_client, artists:list, tracks:list):
             
     return track_uri_list
 
+
 def add_tracks_to_spotify_playlist(sp,tracks_uri,playlist_name):  
     
     user_id = sp.current_user()['id'] # get the current user Id 
@@ -72,6 +71,7 @@ def add_tracks_to_spotify_playlist(sp,tracks_uri,playlist_name):
             playlist_id = playlists["items"][i]["uri"]
     
     sp.user_playlist_add_tracks(user_id, playlist_id, tracks_uri, position= None ) # add the tracks to a playlist determined by the playlist id 
+    
     
 if __name__ == "__main__":
     
